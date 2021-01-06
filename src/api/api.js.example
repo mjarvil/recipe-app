@@ -1,0 +1,2 @@
+export const API_KEY = <Your EDAMAM api key>
+export const APP_ID = <Your EDAMAM app id>
