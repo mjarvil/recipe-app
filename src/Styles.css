@@ -1,0 +1,13 @@
+@import 'antd/dist/antd.css';
+
+.layout-header {
+  padding: 10px;
+}
+
+.layout-main {
+  height: 100vh;
+}
+
+.content {
+  margin: 24px 16px 24px;
+}
