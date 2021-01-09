@@ -6,12 +6,10 @@ import Recipes from './components/Recipes/Recipes';
 import { THEME } from './contants/contants';
 import RecipeInformation from './components/Recipes/Recipe/Information/Information';
 
-import { Layout, Menu, Input, Row, Col } from 'antd';
+import { Layout, Menu } from 'antd';
 
 function App() {
   const { Header, Content, Footer, Sider } = Layout;
-
-  const { Search } = Input;
 
   const onSearch = (value) => console.log(value);
 
@@ -39,23 +37,24 @@ function App() {
             // console.log(collapsed, type);
           }}
         >
-          <Menu theme={THEME} mode="inline" defaultSelectedKeys={['4']}>
-            {/* <Menu.Item key="1">nav 1</Menu.Item> */}
+          <Menu
+            theme={THEME}
+            mode="vertical"
+            defaultSelectedKeys={['4']}
+            style={{ padding: '20px', marginTop: '40px' }}
+          >
+            <Menu.Item key="1">
+              <img src="https://via.placeholder.com/500x500" alt="test" />
+            </Menu.Item>
+            <Menu.Item key="2">
+              <img src="https://via.placeholder.com/200x250" alt="test" />
+            </Menu.Item>
           </Menu>
         </Sider>
         <Layout>
           <Header className="site-layout-sub-header-background layout-header">
-            <Row>
-              <Col span={16} offset={4}>
-                <Search
-                  placeholder="What Are you Craving?"
-                  allowClear
-                  enterButton="Search"
-                  size="large"
-                  onSearch={onSearch}
-                />
-              </Col>
-            </Row>
+            <SearchBar />
+            <Filters />
           </Header>
           <Content className="content">
             <div
