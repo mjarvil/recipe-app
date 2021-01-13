@@ -3,7 +3,7 @@ import React from 'react';
 import { Table, Typography } from 'antd';
 
 const NutritionFact = ({ nutrients }) => {
-  const t = Object.keys(nutrients).map((k, index) => {
+  const tableData = Object.keys(nutrients).map((k) => {
     return {
       ...nutrients[k],
       key: k,
@@ -13,7 +13,7 @@ const NutritionFact = ({ nutrients }) => {
 
   const { Title } = Typography;
 
-  const dataSource = [...t];
+  const dataSource = [...tableData];
 
   const columns = [
     {
