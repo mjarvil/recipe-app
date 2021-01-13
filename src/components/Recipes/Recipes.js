@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 
 import { Space } from 'antd';
 
+// displayResult is a function that will open the drawer component
 const Recipes = ({ displayResult }) => {
   const recipes = useSelector((state) => {
     return state.recipes;

@@ -9,12 +9,19 @@ import './Information.css';
 import { Image, Row, Col, Typography, Button, Divider, Badge } from 'antd';
 
 const RecipeInformation = () => {
+  // state that will hold the information of the recipe
   const [rcp, setRcp] = useState(null);
+
+  // retrieve all recipes from the redux state
   const recipes = useSelector((state) => state.recipes);
+
+  // the index of the selected recipe
   const selectedRecipe = useSelector((state) => state.selectedRecipe);
 
   useEffect(() => {
     if (!selectedRecipe) return;
+
+    // assign rcp state to the selected recipe based on the index
     setRcp(recipes[selectedRecipe]);
   }, [rcp, recipes, selectedRecipe]);
 

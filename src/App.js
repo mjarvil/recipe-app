@@ -12,6 +12,7 @@ function App() {
   const { Header, Content } = Layout;
   const { Title } = Typography;
 
+  // state for the drawer component
   const [state, setState] = useState({
     visible: false,
   });
@@ -53,6 +54,7 @@ function App() {
           >
             <Row>
               <Col span={24}>
+                {/* pass the function to open the drawer */}
                 <Recipes displayResult={showSideDrawer} />
               </Col>
             </Row>
@@ -64,6 +66,8 @@ function App() {
             <div className="site-layout-background" style={{ padding: 24 }}>
               <Row className="layout-header">
                 <Col span={24}>
+                  {/*  pass then function to open the drawer to searchbard */}
+                  component
                   <SearchBar displayResult={showSideDrawer} />
                   <Filters />
                 </Col>

@@ -7,6 +7,7 @@ import './Filters.css';
 import { Radio, Row, Col, Typography } from 'antd';
 
 const Filters = () => {
+  // state which will hold the max result to be retrieved from the api
   const [maxFilter, setMaxFilter] = useState(DEFAULT_MAX_FILTER);
   const dispatch = useDispatch();
 

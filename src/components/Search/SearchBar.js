@@ -6,8 +6,11 @@ import { getRecipes } from '../../actions';
 import { Input, Row, Col } from 'antd';
 
 const SearchBar = ({ displayResult }) => {
+  // state for holding text entered in the searchbox
   const [queryString, setQueryString] = useState('');
   const dispatch = useDispatch();
+
+  // get the max number of result from redux
   const filter = useSelector((state) => state.filter);
 
   const { Search } = Input;
@@ -27,7 +30,9 @@ const SearchBar = ({ displayResult }) => {
           size="large"
           onSearch={() => {
             if (queryString !== '') {
-              displayResult();
+              displayResult(); // open the drawer
+
+              // call the getRecipes function from the actions folder
               dispatch(getRecipes(queryString, filter));
             }
           }}

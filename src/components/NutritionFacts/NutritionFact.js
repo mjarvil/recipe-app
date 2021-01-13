@@ -3,9 +3,11 @@ import React from 'react';
 import { Table, Typography } from 'antd';
 
 const NutritionFact = ({ nutrients }) => {
+  // retrieve the keys from the object and
+  // return each object as an array based on the key
   const tableData = Object.keys(nutrients).map((k) => {
     return {
-      ...nutrients[k],
+      ...nutrients[k], // spread objects
       key: k,
       quantity: Math.round(nutrients[k].quantity),
     };
@@ -13,6 +15,7 @@ const NutritionFact = ({ nutrients }) => {
 
   const { Title } = Typography;
 
+  // spread the data
   const dataSource = [...tableData];
 
   const columns = [
