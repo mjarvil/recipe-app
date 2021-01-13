@@ -66,8 +66,8 @@ function App() {
             <div className="site-layout-background" style={{ padding: 24 }}>
               <Row className="layout-header">
                 <Col span={24}>
-                  {/*  pass then function to open the drawer to searchbard */}
-                  component
+                  {/*  pass then function to open the drawer to searchbard 
+                  component*/}
                   <SearchBar displayResult={showSideDrawer} />
                   <Filters />
                 </Col>
