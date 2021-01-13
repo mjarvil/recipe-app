@@ -1,27 +1,27 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { assignSelectedRecipe } from '../../../actions';
-import './Recipe.css';
+// import './Recipe.css';
 
-const Recipe = ({ image, name, id }) => {
+import { Card, Image } from 'antd';
+
+const Recipe = ({ image, name, id, displayResultHandler }) => {
   const dispatch = useDispatch();
 
   const handleSelectedRecipe = (e) => {
-    const selectedDataID = e.target.dataset.id;
-    dispatch(assignSelectedRecipe(selectedDataID));
+    displayResultHandler();
+    dispatch(assignSelectedRecipe(e.target.dataset.id));
   };
 
   return (
-    <div className="recipe">
-      <img
-        data-id={id}
-        src={image}
-        alt={name}
-        className="recipe-image"
-        onClick={handleSelectedRecipe}
-      />
-      <div className="recipe-name">{name}</div>
-    </div>
+    <>
+      <Card title={name} size="small" style={{ width: '250px' }}>
+        <Image src={image} alt={name} />
+        <button type="link" onClick={handleSelectedRecipe} data-id={id}>
+          View recipe
+        </button>
+      </Card>
+    </>
   );
 };
 

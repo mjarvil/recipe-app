@@ -1,27 +1,20 @@
 import React from 'react';
 
+import { Checkbox, Row, Col } from 'antd';
+
 const Ingredients = ({ ingredientsList }) => {
   return (
-    <div>
+    <>
       {ingredientsList.map((ingredient, index) => {
         return (
-          <div key={Math.random()}>
-            <input
-              key={Math.random()}
-              type="checkbox"
-              id={index}
-              name="ingredientList"
-              value={ingredient.text}
-            />{' '}
-            &nbsp;
-            <label key={Math.random()} htmlFor={index}>
-              {ingredient.text}
-            </label>
-            <br />
-          </div>
+          <Row key={index}>
+            <Col span={24}>
+              <Checkbox>{ingredient.text}</Checkbox>
+            </Col>
+          </Row>
         );
       })}
-    </div>
+    </>
   );
 };
 

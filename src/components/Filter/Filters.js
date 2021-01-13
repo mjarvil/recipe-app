@@ -4,11 +4,13 @@ import { DEFAULT_MAX_FILTER } from '../../contants/contants';
 import { assignFilter } from '../../actions/index';
 import './Filters.css';
 
-import { Radio, Row, Col } from 'antd';
+import { Radio, Row, Col, Typography } from 'antd';
 
 const Filters = () => {
   const [maxFilter, setMaxFilter] = useState(DEFAULT_MAX_FILTER);
   const dispatch = useDispatch();
+
+  const { Text } = Typography;
 
   const handleMaxFilter = (e) => {
     setMaxFilter(parseInt(e.target.value));
@@ -20,54 +22,38 @@ const Filters = () => {
   }, [dispatch, maxFilter]);
 
   return (
-    // <div>
-    //   <h5>Max number of recipes</h5>
-    //   <input
-    //     type="radio"
-    //     id="1rp"
-    //     name="filter"
-    //     value={1}
-    //     defaultChecked
-    //     onClick={handleMaxFilter}
-    //   />
-    //   <label htmlFor="1rp">1 Recipes</label>
-
-    //   <input
-    //     type="radio"
-    //     id="5rp"
-    //     name="filter"
-    //     value={5}
-    //     onClick={handleMaxFilter}
-    //   />
-    //   <label htmlFor="5rp">5 Recipes</label>
-
-    //   <input
-    //     type="radio"
-    //     id="15rp"
-    //     name="filter"
-    //     value={15}
-    //     onClick={handleMaxFilter}
-    //   />
-    //   <label htmlFor="15rp">15 Recipes</label>
-    // </div>
-
-    <Row>
-      <Col span={12} offset={8}>
-        <Radio.Group
-          onChange={handleMaxFilter}
-          value={maxFilter}
-          className="filter-labels"
-        >
-          <Radio className="filter-label-item" value={1}>
-            1 Recipe
-          </Radio>
-          <Radio className="filter-label-item" value={5}>
-            5 recipe
-          </Radio>
-          <Radio className="filter-label-item" value={15}>
-            15 recipes
-          </Radio>
-        </Radio.Group>
+    <Row gutter={[8, 8]}>
+      <Col
+        xs={{ span: 20, offset: 4 }}
+        sm={{ span: 18, offset: 4 }}
+        lg={{ span: 16, offset: 4 }}
+      >
+        <Row>
+          <Col span={24}>
+            <Text className="filter-title" type="primary">
+              Max recipe to retrieve
+            </Text>
+          </Col>
+        </Row>
+        <Row>
+          <Col xs={{ span: 24 }} sm={{ span: 24 }}>
+            <Radio.Group
+              onChange={handleMaxFilter}
+              value={maxFilter}
+              className="filter-labels"
+            >
+              <Radio className="filter-label-item" value={1}>
+                1 Recipe
+              </Radio>
+              <Radio className="filter-label-item" value={5}>
+                5 Recipes
+              </Radio>
+              <Radio className="filter-label-item" value={15}>
+                15 Recipes
+              </Radio>
+            </Radio.Group>
+          </Col>
+        </Row>
       </Col>
     </Row>
   );

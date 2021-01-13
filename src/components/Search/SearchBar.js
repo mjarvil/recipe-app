@@ -5,7 +5,7 @@ import { getRecipes } from '../../actions';
 
 import { Input, Row, Col } from 'antd';
 
-const SearchBar = () => {
+const SearchBar = ({ displayResult }) => {
   const [queryString, setQueryString] = useState('');
   const dispatch = useDispatch();
   const filter = useSelector((state) => state.filter);
@@ -17,19 +17,6 @@ const SearchBar = () => {
   };
 
   return (
-    // <div className="search">
-    //   <h5>What are you craving?</h5>
-    //   <input type="text" onChange={handleQuery} />
-    //   <button
-    //     onClick={() => {
-    //       if (queryString !== '') {
-    //         dispatch(getRecipes(queryString, filter));
-    //       }
-    //     }}
-    //   >
-    //     search
-    //   </button>
-    // </div>
     <Row>
       <Col span={16} offset={4}>
         <Search
@@ -40,6 +27,7 @@ const SearchBar = () => {
           size="large"
           onSearch={() => {
             if (queryString !== '') {
+              displayResult();
               dispatch(getRecipes(queryString, filter));
             }
           }}

@@ -1,67 +1,87 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Styles.css';
 import SearchBar from './components/Search/SearchBar';
 import Filters from './components/Filter/Filters';
 import Recipes from './components/Recipes/Recipes';
-import { THEME } from './contants/contants';
 import RecipeInformation from './components/Recipes/Recipe/Information/Information';
 
-import { Layout, Menu } from 'antd';
+import { Drawer, Layout, Button, Row, Col, Divider, Typography } from 'antd';
+import { LeftOutlined } from '@ant-design/icons';
 
 function App() {
-  const { Header, Content, Footer, Sider } = Layout;
+  const { Header, Content } = Layout;
+  const { Title } = Typography;
 
-  const onSearch = (value) => console.log(value);
+  const [state, setState] = useState({
+    visible: false,
+  });
+
+  const { visible } = state;
+
+  const showSideDrawer = () => {
+    setState({ visible: true });
+  };
+
+  const onCloseSideDrawer = (e, bind) => {
+    e.preventDefault();
+    setState({ visible: false });
+  };
 
   return (
     <div className="app">
-      {/* <section className="recipe-result">
-        <div className="search-filter">
-          <SearchBar />
-          <Filters />
-          <Recipes />
-        </div>
-      </section>
-      <section className="recipe-info">
-        <RecipeInformation />
-      </section> */}
-
       <Layout className="layout-main">
-        <Sider
-          breakpoint="lg"
-          collapsedWidth="0"
-          onBreakpoint={(broken) => {
-            // console.log(broken);
-          }}
-          onCollapse={(collapsed, type) => {
-            // console.log(collapsed, type);
-          }}
-        >
-          <Menu
-            theme={THEME}
-            mode="vertical"
-            defaultSelectedKeys={['4']}
-            style={{ padding: '20px', marginTop: '40px' }}
-          >
-            <Menu.Item key="1">
-              <img src="https://via.placeholder.com/500x500" alt="test" />
-            </Menu.Item>
-            <Menu.Item key="2">
-              <img src="https://via.placeholder.com/200x250" alt="test" />
-            </Menu.Item>
-          </Menu>
-        </Sider>
         <Layout>
-          <Header className="site-layout-sub-header-background layout-header">
-            <SearchBar />
-            <Filters />
-          </Header>
-          <Content className="content">
-            <div
-              className="site-layout-background"
-              style={{ padding: 24, minHeight: 360 }}
+          <Header className="site-header">
+            <Title
+              level={3}
+              className="site-title"
+              style={{ color: '#f27405', marginBottom: '0', padding: '10px 0' }}
             >
-              content
+              Easy Recipe Finder
+            </Title>
+          </Header>
+          <Drawer
+            className="drawer"
+            title="Recipe List"
+            placement="left"
+            closable="true"
+            onClose={onCloseSideDrawer}
+            visible={visible}
+            key="left"
+            width="300"
+            id="side"
+          >
+            <Row>
+              <Col span={24}>
+                <Recipes displayResult={showSideDrawer} />
+              </Col>
+            </Row>
+          </Drawer>
+          <Content
+            className="content"
+            style={{ margin: '24px 16px 0', overflow: 'auto' }}
+          >
+            <div className="site-layout-background" style={{ padding: 24 }}>
+              <Row className="layout-header">
+                <Col span={24}>
+                  <SearchBar displayResult={showSideDrawer} />
+                  <Filters />
+                </Col>
+              </Row>
+              <Row>
+                <Col span={24}>
+                  <Button type="text" onClick={showSideDrawer}>
+                    <LeftOutlined />
+                    View Recipe List
+                  </Button>
+                </Col>
+              </Row>
+              <Divider orientation="left">Recipe Information</Divider>
+              <Row>
+                <Col span={24}>
+                  <RecipeInformation />
+                </Col>
+              </Row>
             </div>
           </Content>
         </Layout>

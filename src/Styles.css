@@ -1,8 +1,25 @@
 @import 'antd/dist/antd.css';
+@import url('https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap');
+
+*,
+html {
+  font-size: 18px;
+}
+
+.site-header {
+  font-family: 'Yusei Magic', sans-serif;
+  height: auto;
+  background-color: #fff;
+}
 
 .layout-header {
-  padding: 10px;
+  padding: 20px 0;
   height: auto;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url('./assets/wood.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-bottom: 50px;
 }
 
 .layout-main {
@@ -11,4 +28,8 @@
 
 .content {
   margin: 24px 16px 24px;
+}
+
+.ant-drawer-wrapper-body {
+  background: #f27405;
 }

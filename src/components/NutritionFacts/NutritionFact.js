@@ -1,10 +1,47 @@
 import React from 'react';
 
-const NutritionFact = ({ nutrient }) => {
+import { Table, Typography } from 'antd';
+
+const NutritionFact = ({ nutrients }) => {
+  const t = Object.keys(nutrients).map((k, index) => {
+    return {
+      ...nutrients[k],
+      key: k,
+      quantity: Math.round(nutrients[k].quantity),
+    };
+  });
+
+  const { Title } = Typography;
+
+  const dataSource = [...t];
+
+  const columns = [
+    {
+      title: 'Code',
+      dataIndex: 'key',
+      key: 'key',
+      responsive: ['md', 'lg', 'sm'],
+    },
+    {
+      title: 'Label',
+      dataIndex: 'label',
+      key: 'label',
+    },
+    {
+      title: 'Quantity',
+      dataIndex: 'quantity',
+      key: 'quantity',
+    },
+    {
+      title: 'Unit',
+      dataIndex: 'unit',
+      key: 'unit',
+    },
+  ];
   return (
-    <div>
-      {nutrient.label.toUpperCase()} ({Math.round(nutrient.quantity)}{' '}
-      {nutrient.unit})
+    <div style={{ overflow: 'auto' }}>
+      <Title level={4}>Nutrition Facts</Title>
+      <Table dataSource={dataSource} columns={columns} />
     </div>
   );
 };

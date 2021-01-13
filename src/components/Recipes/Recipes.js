@@ -3,13 +3,15 @@ import './Recipes.css';
 import Recipe from './Recipe/Recipe';
 import { useSelector } from 'react-redux';
 
-const Recipes = () => {
+import { Space } from 'antd';
+
+const Recipes = ({ displayResult }) => {
   const recipes = useSelector((state) => {
     return state.recipes;
   });
 
   return (
-    <div>
+    <Space direction="vertical">
       {recipes.map(({ recipe }, index) => {
         return (
           <Recipe
@@ -17,10 +19,11 @@ const Recipes = () => {
             id={index}
             image={recipe.image}
             name={recipe.label}
+            displayResultHandler={displayResult}
           />
         );
       })}
-    </div>
+    </Space>
   );
 };
 
