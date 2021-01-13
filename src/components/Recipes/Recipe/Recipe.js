@@ -1,7 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { assignSelectedRecipe } from '../../../actions';
-// import './Recipe.css';
 
 import { Card, Image } from 'antd';
 
